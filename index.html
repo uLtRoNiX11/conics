@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JEE Conic Sections — Formula Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --card: #16161f;
+    --border: #2a2a3a;
+    --accent-circle: #4fc3f7;
+    --accent-ellipse: #81c784;
+    --accent-parabola: #ffb74d;
+    --accent-hyperbola: #f48fb1;
+    --accent-general: #ce93d8;
+    --accent-tips: #80cbc4;
+    --text: #e8e8f0;
+    --muted: #7a7a99;
+    --formula-bg: #0d0d18;
+    --highlight: #ffe082;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #0d0d1a 0%, var(--bg) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(79,195,247,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--accent-circle);
+    background: rgba(79,195,247,0.1);
+    border: 1px solid rgba(79,195,247,0.25);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: #fff;
+    line-height: 1.1;
+  }
+  h1 span { color: var(--accent-circle); }
+  .subtitle {
+    margin-top: 0.6rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); gap: 1.5rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 1.5rem; }
+  .full { grid-column: 1 / -1; }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #3a3a5a; }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .card-body { padding: 1.2rem 1.4rem; }
+
+  /* ─── SECTION HEADINGS ─── */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin-bottom: 0.6rem;
+    display: inline-block;
+  }
+
+  /* ─── FORMULA BLOCKS ─── */
+  .formula-grid { display: flex; flex-direction: column; gap: 0.6rem; }
+  .formula-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.55rem 0.8rem;
+    background: var(--formula-bg);
+    border-radius: 7px;
+    border-left: 3px solid transparent;
+    font-size: 0.88rem;
+  }
+  .formula-row.star { border-left-color: var(--highlight); }
+  .label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    min-width: 130px;
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+  }
+  .formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--text);
+    word-break: break-word;
+  }
+  .formula em { font-style: normal; color: var(--highlight); font-weight: 600; }
+  .formula strong { color: #fff; }
+  sub, sup { font-size: 0.65em; }
+
+  /* ─── TWO-COL INSIDE CARD ─── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1.2rem; }
+  .col-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.9rem 0 0.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+  }
+
+  /* ─── COLORS PER CONIC ─── */
+  .circle .card-dot   { background: var(--accent-circle); }
+  .circle .card-header{ border-color: rgba(79,195,247,0.2); }
+  .circle .section-label { background: rgba(79,195,247,0.12); color: var(--accent-circle); }
+  .circle .formula-row.star { border-left-color: var(--accent-circle); }
+
+  .ellipse .card-dot   { background: var(--accent-ellipse); }
+  .ellipse .card-header{ border-color: rgba(129,199,132,0.2); }
+  .ellipse .section-label { background: rgba(129,199,132,0.12); color: var(--accent-ellipse); }
+  .ellipse .formula-row.star { border-left-color: var(--accent-ellipse); }
+
+  .parabola .card-dot   { background: var(--accent-parabola); }
+  .parabola .card-header{ border-color: rgba(255,183,77,0.2); }
+  .parabola .section-label { background: rgba(255,183,77,0.12); color: var(--accent-parabola); }
+  .parabola .formula-row.star { border-left-color: var(--accent-parabola); }
+
+  .hyperbola .card-dot   { background: var(--accent-hyperbola); }
+  .hyperbola .card-header{ border-color: rgba(244,143,177,0.2); }
+  .hyperbola .section-label { background: rgba(244,143,177,0.12); color: var(--accent-hyperbola); }
+  .hyperbola .formula-row.star { border-left-color: var(--accent-hyperbola); }
+
+  .general .card-dot   { background: var(--accent-general); }
+  .general .card-header{ border-color: rgba(206,147,216,0.2); }
+  .general .section-label { background: rgba(206,147,216,0.12); color: var(--accent-general); }
+
+  .tips .card-dot   { background: var(--accent-tips); }
+  .tips .card-header{ border-color: rgba(128,203,196,0.2); }
+  .tips .section-label { background: rgba(128,203,196,0.12); color: var(--accent-tips); }
+
+  /* ─── PAGE DIVIDERS ─── */
+  .page-section {
+    margin: 2.5rem 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .page-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .page-section hr { flex: 1; border: none; border-top: 1px solid var(--border); }
+
+  /* ─── TABLE ─── */
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.5rem 0.7rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+  td {
+    padding: 0.45rem 0.7rem;
+    border-bottom: 1px solid #1e1e28;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  td:first-child { color: var(--muted); font-size: 0.72rem; }
+
+  /* ─── TIPS LIST ─── */
+  .tips-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .tips-list li {
+    display: flex;
+    gap: 0.7rem;
+    padding: 0.5rem 0.8rem;
+    background: var(--formula-bg);
+    border-radius: 7px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .tips-list li::before {
+    content: '→';
+    color: var(--accent-tips);
+    font-family: 'JetBrains Mono', monospace;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+  .tip-formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    background: rgba(255,255,255,0.05);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    color: var(--highlight);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  @media print {
+    body { background: white; color: black; }
+    .card { border: 1px solid #ccc; break-inside: avoid; }
+    .formula-row { background: #f9f9f9; }
+    header::before { display: none; }
+  }
+
+  @media (max-width: 700px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .label { min-width: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tag">JEE Mains + Advanced · 2019–2026</div>
+  <h1>Conic Sections<br><span>Formula Sheet</span></h1>
+  <p class="subtitle">Circle · Parabola · Ellipse · Hyperbola · Parametric · Tangent · Normal · Chord</p>
+</header>
+
+<div class="container">
+
+  <!-- ═══════════════════════════════════
+       QUICK REFERENCE TABLE
+  ═══════════════════════════════════ -->
+  <div class="page-section"><h2>Quick Comparison</h2><hr></div>
+  <div class="card general full">
+    <div class="card-header">
+      <div class="card-dot"></div>
+      <div class="card-title">All Conics at a Glance — Standard Form &amp; Key Parameters</div>
+    </div>
+    <div class="card-body">
+      <table>
+        <tr>
+          <th>Conic</th>
+          <th>Standard Equation</th>
+          <th>Eccentricity</th>
+          <th>Focus/Foci</th>
+          <th>Directrix</th>
+          <th>LR (Latus Rectum)</th>
+        </tr>
+        <tr><td>Circle</td><td>x²+y² = r²</td><td>e = 0</td><td>(0,0)</td><td>—</td><td>2r</td></tr>
+        <tr><td>Parabola (R)</td><td>y² = 4ax</td><td>e = 1</td><td>(a, 0)</td><td>x = −a</td><td>4a</td></tr>
+        <tr><td>Parabola (U)</td><td>x² = 4ay</td><td>e = 1</td><td>(0, a)</td><td>y = −a</td><td>4a</td></tr>
+        <tr><td>Ellipse (H)</td><td>x²/a²+y²/b² = 1, a>b</td><td>e = c/a &lt; 1</td><td>(±ae, 0)</td><td>x = ±a/e</td><td>2b²/a</td></tr>
+        <tr><td>Ellipse (V)</td><td>x²/b²+y²/a² = 1, a>b</td><td>e = c/a &lt; 1</td><td>(0, ±ae)</td><td>y = ±a/e</td><td>2b²/a</td></tr>
+        <tr><td>Hyperbola</td><td>x²/a²−y²/b² = 1</td><td>e = c/a > 1</td><td>(±ae, 0)</td><td>x = ±a/e</td><td>2b²/a</td></tr>
+        <tr><td>Rect. Hyp.</td><td>xy = c²</td><td>e = √2</td><td>(±c√2, ±c√2)</td><td>x+y = ±c√2</td><td>2c√2</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       CIRCLE
+  ═══════════════════════════════════ -->
+  <div class="page-section"><h2>Circle</h2><hr></div>
+  <div class="grid-2">
+
+    <div class="card circle">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Standard Forms &amp; Properties</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Standard</span>
+            <span class="formula">x² + y² = <em>r²</em></span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">General</span>
+            <span class="formula">x²+y²+<em>2gx</em>+<em>2fy</em>+<em>c</em> = 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Centre, Radius</span>
+            <span class="formula">C = (−g, −f), r = √(g²+f²−c)</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Diameter form</span>
+            <span class="formula">(x−x₁)(x−x₂)+(y−y₁)(y−y₂) = 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Parametric</span>
+            <span class="formula">x = h+r·cosθ, y = k+r·sinθ</span>
+          </div>
+          <div class="divider">Tangent &amp; Normal</div>
+          <div class="formula-row star">
+            <span class="label">Tangent at (x₁,y₁)</span>
+            <span class="formula">xx₁ + yy₁ = r²</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Tangent (slope m)</span>
+            <span class="formula">y = mx ± r√(1+m²)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Tangent (general)</span>
+            <span class="formula">T = 0: xx₁+yy₁+g(x+x₁)+f(y+y₁)+c = 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Normal at (x₁,y₁)</span>
+            <span class="formula">passes through centre C = (−g,−f)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Length of tangent</span>
+            <span class="formula">√(S₁) = √(x₁²+y₁²+2gx₁+2fy₁+c)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card circle">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Chord, Power &amp; Family of Circles</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Chord of contact</span>
+            <span class="formula">T = 0 (same as tangent formula)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Chord bisected at (h,k)</span>
+            <span class="formula">T = S₁  i.e.  hx+ky = h²+k²</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Radical axis</span>
+            <span class="formula">S₁ − S₂ = 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Power of a point</span>
+            <span class="formula">PA·PB = PT² = S₁</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Common chord</span>
+            <span class="formula">S₁ − S₂ = 0</span>
+          </div>
+          <div class="divider">Family of Circles</div>
+          <div class="formula-row star">
+            <span class="label">Through intersect.</span>
+            <span class="formula">S₁ + λS₂ = 0</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Through intersect. of S &amp; L</span>
+            <span class="formula">S + λL = 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Angle between circles</span>
+            <span class="formula">cos θ = (r₁²+r₂²−d²) / (2r₁r₂)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Orthogonal circles</span>
+            <span class="formula">2g₁g₂ + 2f₁f₂ = c₁+c₂</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Pole of line lx+my=n</span>
+            <span class="formula">w.r.t. x²+y²=r² → (lr²/n, mr²/n)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════
+       PARABOLA
+  ═══════════════════════════════════ -->
+  <div class="page-section"><h2>Parabola</h2><hr></div>
+  <div class="grid-2">
+
+    <div class="card parabola">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Four Standard Parabolas</div>
+      </div>
+      <div class="card-body">
+        <table>
+          <tr><th>Form</th><th>Equation</th><th>Focus</th><th>Vertex</th><th>Axis</th></tr>
+          <tr><td>Right</td><td>y² = 4ax</td><td>(a,0)</td><td>(0,0)</td><td>y=0</td></tr>
+          <tr><td>Left</td><td>y² = −4ax</td><td>(−a,0)</td><td>(0,0)</td><td>y=0</td></tr>
+          <tr><td>Up</td><td>x² = 4ay</td><td>(0,a)</td><td>(0,0)</td><td>x=0</td></tr>
+          <tr><td>Down</td><td>x² = −4ay</td><td>(0,−a)</td><td>(0,0)</td><td>x=0</td></tr>
+        </table>
+        <div class="divider">Parametric (y² = 4ax)</div>
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Point on parabola</span>
+            <span class="formula">(<em>at²</em>, <em>2at</em>)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Focal distance</span>
+            <span class="formula">SP = x₁ + a = a(1+t²)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Focal chord</span>
+            <span class="formula">t₁·t₂ = <em>−1</em></span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Focal chord length</span>
+            <span class="formula">a(t₁−t₂)² = a(t + 1/t)²</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card parabola">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Tangent, Normal &amp; Chord (y² = 4ax)</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Tangent at (x₁,y₁)</span>
+            <span class="formula">yy₁ = <em>2a(x+x₁)</em></span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Tangent (param t)</span>
+            <span class="formula">ty = x + at²</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Tangent (slope m)</span>
+            <span class="formula">y = mx + <em>a/m</em></span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Point of contact</span>
+            <span class="formula">(a/m², 2a/m)</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Normal (param t)</span>
+            <span class="formula">y = −tx + 2at + at³</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Normal (slope m)</span>
+            <span class="formula">y = mx − 2am − am³</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Normal at (x₁,y₁)</span>
+            <span class="formula">y−y₁ = −(y₁/2a)(x−x₁)</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Chord of contact</span>
+            <span class="formula">T = 0: yy₁ = 2a(x+x₁)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Chord (midpoint h,k)</span>
+            <span class="formula">ky − 2a(x+h) = k²−4ah</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Normals concurrent</span>
+            <span class="formula">t₁+t₂+t₃ = 0, t₁t₂+t₂t₃+t₁t₃ = a+2</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Tangents' intersection</span>
+            <span class="formula">(at₁t₂, a(t₁+t₂))</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════
+       ELLIPSE
+  ═══════════════════════════════════ -->
+  <div class="page-section"><h2>Ellipse</h2><hr></div>
+  <div class="grid-2">
+
+    <div class="card ellipse">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Standard Form &amp; Properties</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Equation (a>b)</span>
+            <span class="formula">x²/<em>a²</em> + y²/<em>b²</em> = 1</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Relation</span>
+            <span class="formula">b² = a²(1−e²) → <em>c² = a²−b²</em></span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Foci</span>
+            <span class="formula">(±ae, 0) = (±c, 0)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Directrices</span>
+            <span class="formula">x = ±a/e</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Vertices</span>
+            <span class="formula">(±a, 0) major; (0, ±b) minor</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Focal radii sum</span>
+            <span class="formula">SP + S'P = <em>2a</em></span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Focal radii</span>
+            <span class="formula">SP = a−ex₁, S'P = a+ex₁</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Parametric</span>
+            <span class="formula">(a·cosθ, b·sinθ)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Latus Rectum</span>
+            <span class="formula">length = 2b²/a, ends (ae, ±b²/a)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Area of ellipse</span>
+            <span class="formula">πab</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Auxiliary circle</span>
+            <span class="formula">x²+y² = a²</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card ellipse">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Tangent, Normal &amp; Chord</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Tangent at (x₁,y₁)</span>
+            <span class="formula">xx₁/a² + yy₁/b² = 1</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Tangent (slope m)</span>
+            <span class="formula">y = mx ± √(a²m²+b²)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Tangent (param θ)</span>
+            <span class="formula">(xcosθ)/a + (ysinθ)/b = 1</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Normal at (x₁,y₁)</span>
+            <span class="formula">a²x/x₁ − b²y/y₁ = a²−b²</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Normal (param θ)</span>
+            <span class="formula">ax·secθ − by·cosecθ = a²−b²</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Chord of contact</span>
+            <span class="formula">T=0: xx₁/a²+yy₁/b² = 1</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Chord (midpoint h,k)</span>
+            <span class="formula">T = S₁: hx/a²+ky/b² = h²/a²+k²/b²</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Director circle</span>
+            <span class="formula">x²+y² = a²+b²</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Conjugate diameters</span>
+            <span class="formula">m₁·m₂ = −b²/a²</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Condition of tangency</span>
+            <span class="formula">c² = a²m²+b²</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Pole of lx+my = n</span>
+            <span class="formula">(a²l/n, b²m/n)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════
+       HYPERBOLA
+  ═══════════════════════════════════ -->
+  <div class="page-section"><h2>Hyperbola</h2><hr></div>
+  <div class="grid-2">
+
+    <div class="card hyperbola">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Standard Form &amp; Properties</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Equation</span>
+            <span class="formula">x²/<em>a²</em> − y²/<em>b²</em> = 1</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Relation</span>
+            <span class="formula">b² = a²(e²−1) → <em>c² = a²+b²</em></span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Foci</span>
+            <span class="formula">(±ae, 0)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Directrices</span>
+            <span class="formula">x = ±a/e</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Focal radii diff.</span>
+            <span class="formula">|SP − S'P| = <em>2a</em></span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Focal radii</span>
+            <span class="formula">SP = |ex₁−a|, S'P = |ex₁+a|</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Asymptotes</span>
+            <span class="formula">y = ±(b/a)x, i.e. bx ± ay = 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Angle between asymp.</span>
+            <span class="formula">tan(α) = 2ab/(a²−b²)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Parametric</span>
+            <span class="formula">(a·secθ, b·tanθ) or (a·coshθ, b·sinhθ)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Latus Rectum</span>
+            <span class="formula">length = 2b²/a</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Rect. Hyperbola</span>
+            <span class="formula">a = b → xy = c², param: (ct, c/t)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Conjugate Hyp.</span>
+            <span class="formula">−x²/a² + y²/b² = 1, e' = a/b·e</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card hyperbola">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Tangent, Normal &amp; Rectangular Hyperbola</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Tangent at (x₁,y₁)</span>
+            <span class="formula">xx₁/a² − yy₁/b² = 1</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Tangent (slope m)</span>
+            <span class="formula">y = mx ± √(a²m²−b²)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Tangent (param θ)</span>
+            <span class="formula">(x·secθ)/a − (y·tanθ)/b = 1</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Normal at (x₁,y₁)</span>
+            <span class="formula">a²x/x₁ + b²y/y₁ = a²+b²</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Condition of tangency</span>
+            <span class="formula">c² = a²m²−b²</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Chord of contact</span>
+            <span class="formula">T=0: xx₁/a²−yy₁/b² = 1</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Director circle</span>
+            <span class="formula">x²+y² = a²−b²</span>
+          </div>
+          <div class="divider">Rectangular Hyperbola  xy = c²</div>
+          <div class="formula-row star">
+            <span class="label">Tangent at (ct, c/t)</span>
+            <span class="formula">x + t²y = 2ct</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Normal at (ct, c/t)</span>
+            <span class="formula">xt³ − ty = c(t⁴−1)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Chord joining t₁,t₂</span>
+            <span class="formula">x + t₁t₂·y = c(t₁+t₂)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Normals concurrent</span>
+            <span class="formula">t₁t₂t₃t₄ = −1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════
+       GENERAL SECOND DEGREE
+  ═══════════════════════════════════ -->
+  <div class="page-section"><h2>General &amp; Combined</h2><hr></div>
+  <div class="grid-3">
+
+    <div class="card general">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">General 2nd Degree Curve</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Form</span>
+            <span class="formula">ax²+2hxy+by²+2gx+2fy+c = 0</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Discriminant Δ</span>
+            <span class="formula">Δ = abc+2fgh−af²−bg²−ch²</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Pair of lines if</span>
+            <span class="formula">Δ = 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Circle if</span>
+            <span class="formula">a = b, h = 0, Δ ≠ 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Parabola if</span>
+            <span class="formula">ab − h² = 0, Δ ≠ 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Ellipse if</span>
+            <span class="formula">ab − h² > 0, Δ ≠ 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Hyperbola if</span>
+            <span class="formula">ab − h² &lt; 0, Δ ≠ 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Rect. Hyp. if</span>
+            <span class="formula">a + b = 0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card general">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Pair of Straight Lines</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Homogeneous</span>
+            <span class="formula">ax²+2hxy+by² = 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Sum of slopes</span>
+            <span class="formula">m₁+m₂ = −2h/b</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Product of slopes</span>
+            <span class="formula">m₁m₂ = a/b</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Angle between</span>
+            <span class="formula">tan θ = ±2√(h²−ab)/(a+b)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Perpendicular if</span>
+            <span class="formula">a + b = 0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Coincident if</span>
+            <span class="formula">h² = ab</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Bisectors (angle)</span>
+            <span class="formula">(x²−y²)/(a−b) = xy/h</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Homogenize S w/ L</span>
+            <span class="formula">S + λL² = 0 (chord → pair of lines)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card general">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Shifted / Translated Conics</div>
+      </div>
+      <div class="card-body">
+        <div class="formula-grid">
+          <div class="formula-row star">
+            <span class="label">Circle (center h,k)</span>
+            <span class="formula">(x−h)²+(y−k)² = r²</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Parabola shifted</span>
+            <span class="formula">(y−k)² = 4a(x−h)</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Ellipse shifted</span>
+            <span class="formula">(x−h)²/a²+(y−k)²/b² = 1</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Hyperbola shifted</span>
+            <span class="formula">(x−h)²/a²−(y−k)²/b² = 1</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">How to shift</span>
+            <span class="formula">Complete the square in x &amp; y separately</span>
+          </div>
+          <div class="divider">Position of Point</div>
+          <div class="formula-row">
+            <span class="label">Inside/Outside</span>
+            <span class="formula">S(x₁,y₁) &lt; 0 → inside; > 0 → outside</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">No. of tangents</span>
+            <span class="formula">S₁&lt;0: 0, S₁=0: 1, S₁>0: 2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════
+       JEE TIPS
+  ═══════════════════════════════════ -->
+  <div class="page-section"><h2>JEE High-Yield Tricks</h2><hr></div>
+  <div class="grid-2">
+
+    <div class="card tips">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Key Observations &amp; Short Tricks</div>
+      </div>
+      <div class="card-body">
+        <ul class="tips-list">
+          <li><strong>Focal chord of parabola y²=4ax:</strong> If ends are t₁,t₂ → <span class="tip-formula">t₁t₂ = −1</span>. Harmonic mean of SP,SQ = semi-LR = <span class="tip-formula">2a</span>.</li>
+          <li><strong>Parabola normal trick:</strong> If 3 normals from (h,k) are concurrent, the 3rd normal foot t satisfies <span class="tip-formula">t₁+t₂+t₃=0</span>. Point (h,k) lies on parabola if h>2a.</li>
+          <li><strong>Ellipse: max area of inscribed rect.</strong> = <span class="tip-formula">2ab</span> (at θ=45°).</li>
+          <li><strong>Point of intersection of tangents at θ₁,θ₂ on ellipse:</strong> <span class="tip-formula">x = a·cos((θ₁+θ₂)/2)/cos((θ₁−θ₂)/2)</span></li>
+          <li><strong>Hyperbola asymptotes:</strong> Tangent at infinity. The curve and asymptotes differ only by a constant: <span class="tip-formula">xy = c² ↔ (x−ae)(x+ae) = b²</span>.</li>
+          <li><strong>Reflection property:</strong> Parabola reflects rays ∥ axis through focus; Ellipse reflects from one focus to other; Hyperbola reflects toward the other focus.</li>
+          <li><strong>Circle — 3 points:</strong> General form gives 3 equations → unique circle. Use family method for circles through 2 given points.</li>
+          <li><strong>T=S₁ trick:</strong> Chord whose midpoint is (h,k) → write T=S₁ directly for any conic.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card tips">
+      <div class="card-header">
+        <div class="card-dot"></div>
+        <div class="card-title">Common JEE Problem Patterns</div>
+      </div>
+      <div class="card-body">
+        <ul class="tips-list">
+          <li><strong>Locus problems:</strong> Use parametric coords, eliminate parameter. Check: circle, parabola, or line.</li>
+          <li><strong>Tangent from external point:</strong> Use SS₁=T² for chord of contact; length of tangent = √S₁.</li>
+          <li><strong>Normal through a given point:</strong> Substitute <span class="tip-formula">y = mx−2am−am³</span> and find m using the given point. Can get 1,2 or 3 normals.</li>
+          <li><strong>Intersection of two conics:</strong> Homogenize one with the line of the chord to get pair of lines → use angle condition.</li>
+          <li><strong>Director circle:</strong> Circle → r√2; Ellipse → √(a²+b²); Hyperbola → √(a²−b²). Tangents from director circle are ⊥.</li>
+          <li><strong>Eccentric angle trick (Ellipse):</strong> Area of parallelogram formed by tangents at 4 conjugate points = <span class="tip-formula">2ab/sin(2α)</span>.</li>
+          <li><strong>Rectangular hyperbola xy=c²:</strong> Orthocentre of any triangle inscribed in xy=c² also lies on xy=c².</li>
+          <li><strong>Pole–Polar duality:</strong> If P lies on polar of Q, then Q lies on polar of P (La Hire's theorem).</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════
+       EXTRA RESULTS
+  ═══════════════════════════════════ -->
+  <div class="page-section"><h2>Extra Results &amp; Identities</h2><hr></div>
+  <div class="card general full">
+    <div class="card-header">
+      <div class="card-dot"></div>
+      <div class="card-title">Miscellaneous High-Frequency Formulas</div>
+    </div>
+    <div class="card-body">
+      <div class="two-col">
+        <div class="col-group">
+          <div class="divider">Parabola</div>
+          <div class="formula-row">
+            <span class="label">Length of chord</span>
+            <span class="formula">= 4/sin²θ · √(a·x₁) (for slope θ)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Sub-tangent</span>
+            <span class="formula">= 2x₁ (double abscissa)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Sub-normal</span>
+            <span class="formula">= 2a (constant)</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Foot of normal if (h,k)</span>
+            <span class="formula">at³+(2a−h)t−k = 0 (cubic in t)</span>
+          </div>
+          <div class="divider">Ellipse</div>
+          <div class="formula-row">
+            <span class="label">Sum SP+S'P</span>
+            <span class="formula">= 2a (constant)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Max/min focal chord</span>
+            <span class="formula">max = major axis 2a; min = LR = 2b²/a</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Eccentric angle relation</span>
+            <span class="formula">x = a·cosφ (φ = eccentric angle)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Normal bisects</span>
+            <span class="formula">angle ∠S₁PS₂ (focal chord property)</span>
+          </div>
+        </div>
+        <div class="col-group">
+          <div class="divider">Hyperbola</div>
+          <div class="formula-row">
+            <span class="label">Asymptote trick</span>
+            <span class="formula">Any pt on H = (aSecθ, bTanθ); asymp intersect at ∞</span>
+          </div>
+          <div class="formula-row star">
+            <span class="label">Hyperbola ↔ Asymp</span>
+            <span class="formula">Asymptote: bx±ay=0; combined eq: x²/a²−y²/b²=0</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Focal chord length</span>
+            <span class="formula">= 2b²/a · 1/(e²cos²θ−1) (half-angle θ)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">RH: 4 points sum</span>
+            <span class="formula">centroid of 4 conormal pts on xy=c² is origin</span>
+          </div>
+          <div class="divider">Circle</div>
+          <div class="formula-row star">
+            <span class="label">Radical centre</span>
+            <span class="formula">S₁−S₂=0, S₂−S₃=0 → solve simultaneously</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Coaxial system</span>
+            <span class="formula">S+λL=0 (limiting points where r→0)</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Image of centre</span>
+            <span class="formula">in chord = midpt of chord if chord is diameter</span>
+          </div>
+          <div class="formula-row">
+            <span class="label">Common tangents</span>
+            <span class="formula">External: d>r₁+r₂ (4); Internal: |r₁−r₂|&lt;d&lt;r₁+r₂ (2)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  JEE Conic Sections Formula Sheet · Mains &amp; Advanced 2019–2026 · ★ = Most Frequently Tested
+</footer>
+
+</body>
+</html>
